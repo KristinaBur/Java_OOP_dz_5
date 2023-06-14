@@ -10,6 +10,7 @@ public class Program {
 
     /**
      * TODO: Домашняя работа: Метод changeReservationTable ДОЛЖЕН ЗАРАБОТАТЬ!
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -24,9 +25,13 @@ public class Program {
 
         bookingView.reservationTable(new Date(), 102, "Станислав");
 
-        bookingView.reservationTable(new Date(), 315, "Кристина");
+        //bookingView.changeReservationTable();
+        System.out.println("-------------------------------------------");
 
-        bookingView.changeReservationTable(1001, new Date(), 2, "Станислав");
+        bookingView.changeReservationTable(9001, new Date(), 101, "Станислав");
+
+        System.out.println("-------------------------------------------");
+        bookingView.changeReservationTable(9001, new Date(), 104, "Станислав");
     }
 
 }

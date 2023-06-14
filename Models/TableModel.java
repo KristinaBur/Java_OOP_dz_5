@@ -50,22 +50,17 @@ public class TableModel implements Model {
     /**
      * TODO: Разработать самостоятельно в рамках домашней работы
      * Поменять бронь столика
-     * 
-     * @param oldReservation  номер старого резерва (для снятия)
-     * @param reservationDate дата резерва столика
-     * @param tableNo         номер столика
-     * @param name            Имя
      */
-    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
-        for (Table table : tables) {
-            for (Reservation reserv : table.getReservations()) {
-                if (reserv.getId() == oldReservation) {
-                    table.getReservations().remove(reserv);
-                    break;
+    public int changeReservationTable(int oldReservation, Date orderDate, int tableNo, String name){
+        for (Table table: tables){
+            for (Reservation reservation: table.getReservations()){
+                if (reservation.getId() == oldReservation){
+                    table.getReservations().remove(reservation);
+                    return reservationTable(orderDate, tableNo, name);
                 }
             }
         }
-        return reservationTable(reservationDate, tableNo, name);
+        throw new RuntimeException("Некорректный номер бронирования столика.");
         //...
         //TODO: Для создания новой брони, можно воспользоваться уже существующим методом reservationTable
     }

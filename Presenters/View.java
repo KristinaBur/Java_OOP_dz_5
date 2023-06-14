@@ -12,11 +12,6 @@ public interface View {
      */
     void showTables(Collection<Table> tables);
 
-    void showReservationStatus(int reservationNo);
-
-    void showEditReservationStatus(int oldReservationNo, int reservationNo);
-    
-
     /**
      * Установить наблюдателя, отслеживающего действия пользователя
      * @param observer наблюдатель
@@ -26,5 +21,8 @@ public interface View {
     void printReservationTableResult(int reservationNo);
 
     void printReservationTableError(String errorMessage);
+    
+    void printChangeReservationTableResult(int reservationNo);
 
+    void printChangeReservationTableError(String errorMessage);
 }

@@ -21,21 +21,29 @@ public class BookingView implements View {
 
     @Override
     public void printReservationTableResult(int reservationNo) {
-        System.out.printf("Столик успешно забронирован. Номер вашей брони: #%d\n", reservationNo);
+        System.out.printf("Столик успешно забронирован. Номер Вашей брони: #%d\n", reservationNo);
     }
 
     @Override
     public void printReservationTableError(String errorMessage) {
         System.out.printf("Невозможно забронировать столик. \n%s\n", errorMessage);
     }
+    @Override
+    public void printChangeReservationTableResult(int reservationNo) {
+        System.out.printf("Бронирование столика изменено. Номер Вашей новой брони: #%d\n", reservationNo);
+    }
 
+    @Override
+    public void printChangeReservationTableError(String errorMessage) {
+        System.out.printf("Невозможно забронировать столик.\n%s", errorMessage);
+    }
     @Override
     public void showTables(Collection<Table> tables) {
         for (Table table: tables) {
             System.out.println(table);
         }
     }
-    
+
     public void reservationTable(Date reservationDate, int tableNo, String name){
         observer.onReservationTable(reservationDate, tableNo, name);
     }
@@ -48,22 +56,8 @@ public class BookingView implements View {
      * @param tableNo номер столика
      * @param name имя
      */
-    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
-        observer.onChangeReservationTable(oldReservation, reservationDate, tableNo, name);
-
+    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+        observer.onChangeReservationTable(oldReservation,reservationDate,tableNo,name);
     }
-
-    @Override
-    public void showReservationStatus(int reservationNo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showReservationStatus'");
-    }
-
-    @Override
-    public void showEditReservationStatus(int oldReservationNo, int reservationNo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showEditReservationStatus'");
-    }
-
 
 }

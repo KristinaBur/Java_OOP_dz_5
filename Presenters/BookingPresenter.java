@@ -30,6 +30,13 @@ public class BookingPresenter implements ViewObserver {
     public void printReservationTableError(String errorMessage){
         bookingView.printReservationTableError(errorMessage);
     }
+    public void printChangeReservationTableResult(int reservationId) {
+        bookingView.printChangeReservationTableResult(reservationId);
+    }
+
+    public void printChangeReservationTableError(String errorMessage){
+        bookingView.printChangeReservationTableError(errorMessage);
+    }
 
     @Override
     public void onReservationTable(Date orderDate, int tableNo, String name) {
@@ -43,10 +50,15 @@ public class BookingPresenter implements ViewObserver {
         }
 
     }
-
     @Override
     public void onChangeReservationTable(int oldReservation, Date orderDate, int tableNo, String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Нереализованный метод в бронировании");
+        try
+        {
+            int reservationId = tableModel.changeReservationTable(oldReservation, orderDate, tableNo,name);
+            printChangeReservationTableResult(reservationId);
+        }
+        catch (RuntimeException e){
+            printChangeReservationTableError(e.getMessage());
+        }
     }
 }
